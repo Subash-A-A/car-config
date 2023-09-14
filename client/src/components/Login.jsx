@@ -26,16 +26,14 @@ function Login() {
     const user = document.getElementById("username").value;
     const pass = document.getElementById("password").value;
     const email = document.getElementById("email").value;
-    console.log(user, pass, email);
     const res = await axios.post("http://localhost:4000/app/signup", {
       username: user,
       password: pass,
       email: email,
     });
-    console.log(res);
     if (res == "existing user") {
     } else {
-      alert(res);
+      alert(res.data);
     }
   }
   return (

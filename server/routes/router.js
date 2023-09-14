@@ -1,7 +1,49 @@
 const express = require("express");
 const router = express.Router();
 const Signuptemplatecopy = require("../models/signupModel");
+const carDetailsTempalate = require("../models/CarModel");
+const orderDetailsTempalate = require("../models/CarOrder")
 const bcrypt = require("bcrypt");
+
+router.post("/order",(req,res)=>{
+    const orderData = new orderDetailsTempalate({
+        username:req.body.username,
+        orderNo:req.body.orderNo,
+        paymentStatus:req.body.paymentStatus,
+        modelName:req.body.modelName,
+        bodyColor:req.body.bodyColor,
+        tireColor:req.body.tireColor
+    })
+    orderData.save().then(data=>{
+        res.json(data);
+    })
+    .catch(err => {
+        res.send({
+            status:404,
+            message:"cannot save in DB",
+            error:err
+        })
+    });
+
+})
+
+router.post("/cardata",(req,res)=>{
+        const carData = new carDetailsTempalate({
+            username:req.body.username,
+            modelName:req.body.modelName,
+            bodyColor:req.body.bodyColor,
+            tireColor:req.body.tireColor
+        })
+        carData.save().then(data=>{
+            res.json(data);
+        })
+        .catch(err => {
+            res.send({
+                status:404,
+                message:"cannot save in DB",
+            })
+        });
+})
 
 router.post("/login", (req, res) => {
   const username = req.body.username;
