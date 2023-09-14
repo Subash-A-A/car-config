@@ -41,6 +41,11 @@
   color: #f1f0e8;
 }
 
+.toggle_btn {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 .login_fields {
   display: flex;
   flex-direction: column;
