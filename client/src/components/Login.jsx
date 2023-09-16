@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import "../styles/Login.scss";
 import login_bg from "../assets/login_bg.png";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function Login() {
+  const navigate = useNavigate();
   const [isUser, setUser] = useState(false);
   function toggleState() {
     setUser(!isUser);
@@ -17,7 +19,9 @@ function Login() {
     });
 
     if (res.data == "existing user") {
+      localStorage.setItem("authenticated", true);
       console.log("fine");
+      navigate("homepage");
     } else {
       alert(res);
     }

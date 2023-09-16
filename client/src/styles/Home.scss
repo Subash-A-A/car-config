@@ -1,0 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=Staatliches&display=swap");
+
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Staatliches";
+  background-image: url("../assets/home_bg.jpg");
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+}
+
+.title_container {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5%;
+}
+
+.err_bg {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Staatliches";
+  background-color: #352f44;
+  color: #faf0e6;
+}
+
+.home_title {
+  font-size: 500%;
+}
+
+.btn {
+  position: absolute;
+  bottom: 5%;
+  right: 15%;
+  background-color: white;
+  opacity: 0.5;
+  font-size: x-large;
+  color: #352f44;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15%;
+  height: 7%;
+  border: 2px solid black;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  transition: all 0.2s ease-in;
+}
+
+.btn:hover {
+  color: white;
+  background-color: black;
+}
+
+.sub_title {
+  font-size: 200%;
+}
