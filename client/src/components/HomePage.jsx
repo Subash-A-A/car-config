@@ -1,9 +1,11 @@
 import React from "react";
 import { useState } from "react";
 import "../styles/Home.scss";
+import { useNavigate } from "react-router-dom";
 
 function HomePage() {
   const isAuthenticated = localStorage.getItem("authenticated") || false;
+  const navigate = useNavigate();
   return (
     <>
       {!isAuthenticated ? (
@@ -19,7 +21,14 @@ function HomePage() {
               <h1 className="home_title">CarMod Garage</h1>
               <h2 className="sub_title">Unleash Your Inner Gearhead</h2>
             </div>
-            <div className="btn">Get Started!</div>
+            <div
+              className="btn"
+              onClick={() => {
+                navigate("/editor");
+              }}
+            >
+              Get Started!
+            </div>
           </div>
         </>
       )}

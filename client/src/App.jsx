@@ -18,6 +18,7 @@ function App() {
           path="/"
           Component={() => <Login setCurrentUser={setCurrentUser} />}
         />
+        <Route path="/home" Component={() => <HomePage />} />
         <Route
           path="/editor"
           Component={() => <Experience user={currentUser} />}

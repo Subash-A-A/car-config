@@ -17,7 +17,7 @@ import { Garage } from "./Garage";
 
 const Experience = ({ user }) => {
   const navigate = useNavigate();
-  const [car, setCar] = useState(0);
+  const [car, setCar] = useState(2);
 
   useEffect(() => {
     if (!user) {

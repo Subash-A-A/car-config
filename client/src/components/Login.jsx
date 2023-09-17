@@ -3,7 +3,6 @@ import "../styles/Login.scss";
 import login_bg from "../assets/login_bg.png";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 function Login({ setCurrentUser }) {
   const navigate = useNavigate();
@@ -23,7 +22,7 @@ function Login({ setCurrentUser }) {
       localStorage.setItem("authenticated", true);
       console.log("fine");
       setCurrentUser(user);
-      navigate("/editor");
+      navigate("/home");
     } else {
       alert(res);
     }
