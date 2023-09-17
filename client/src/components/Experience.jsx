@@ -1,38 +1,50 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import "../styles/Experience.scss";
-import {
-  AccumulativeShadows,
-  RandomizedLight,
-  Center,
-  Environment,
-  OrbitControls,
-} from "@react-three/drei";
+import { Environment, OrbitControls } from "@react-three/drei";
+import { useNavigate } from "react-router-dom";
 
 import { Env } from "./Env";
 import { useControls } from "leva";
+import { Lambo } from "./Lambo";
+import { Lambo1 } from "./Lambo1";
+import { Lambo2 } from "./Lambo2";
+import { Ferrari } from "./Ferrari";
+import { Mustang } from "./Mustang";
+import { ContactShadows } from "@react-three/drei";
+import Picker from "./Picker";
+import { Garage } from "./Garage";
 
-const Experience = () => {
-  const { roughness } = useControls({
-    roughness: { value: 1, min: 0, max: 1 },
-  });
+const Experience = ({ user }) => {
+  const navigate = useNavigate();
+  const [car, setCar] = useState(0);
+
+  useEffect(() => {
+    if (!user) {
+      console.log("Please login");
+      navigate("/");
+      alert("Please Login");
+    }
+  }, [user]);
+
   return (
     <div id="experience">
-      <Canvas shadows camera={{ position: [0, 0, 4.5], fov: 50 }}>
-        <group position={[0, 0, 0]}>
-          <mesh castShadow position={[0, 0, 0]}>
-            <sphereGeometry args={[0.75, 64, 64]} />
-            <meshStandardMaterial metalness={1} roughness={roughness} />
-          </mesh>
+      <Canvas shadows camera={{ position: [5, 3, 4.5], fov: 35 }}>
+        <ambientLight intensity={2} position={[5, 5, 0]} />
+        <group position={[0, -0.5, 0]}>
+          {car == 0 && <Ferrari />}
+          {car == 1 && <Lambo2 />}
+          {car == 2 && <Mustang />}
+          <ContactShadows opacity={0.6} smooth />
         </group>
-        <Env />
+        <Environment preset="city" background blur={0.7} />
         <OrbitControls
-          autoRotate
-          autoRotateSpeed={4}
+          minDistance={4}
+          maxDistance={12}
           enablePan={false}
-          enableZoom={false}
-          minPolarAngle={Math.PI / 2.1}
-          maxPolarAngle={Math.PI / 2.1}
+          autoRotate
+          autoRotateSpeed={0.5}
+          maxPolarAngle={Math.PI / 2.125}
         />
       </Canvas>
     </div>

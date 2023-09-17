@@ -3,8 +3,9 @@ import "../styles/Login.scss";
 import login_bg from "../assets/login_bg.png";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-function Login() {
+function Login({ setCurrentUser }) {
   const navigate = useNavigate();
   const [isUser, setUser] = useState(false);
   function toggleState() {
@@ -21,7 +22,8 @@ function Login() {
     if (res.data == "existing user") {
       localStorage.setItem("authenticated", true);
       console.log("fine");
-      navigate("homepage");
+      setCurrentUser(user);
+      navigate("/editor");
     } else {
       alert(res);
     }

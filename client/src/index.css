@@ -3,3 +3,11 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.picker {
+  position: absolute !important;
+  top: 74px;
+  left: 70px;
+  width: 90px !important;
+  height: 90px !important;
+}
