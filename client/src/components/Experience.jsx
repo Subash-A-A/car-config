@@ -4,20 +4,31 @@ import "../styles/Experience.scss";
 import { Environment, OrbitControls } from "@react-three/drei";
 import { useNavigate } from "react-router-dom";
 
-import { Env } from "./Env";
 import { useControls } from "leva";
-import { Lambo } from "./Lambo";
-import { Lambo1 } from "./Lambo1";
 import { Lambo2 } from "./Lambo2";
 import { Ferrari } from "./Ferrari";
 import { Mustang } from "./Mustang";
 import { ContactShadows } from "@react-three/drei";
-import Picker from "./Picker";
-import { Garage } from "./Garage";
 
 const Experience = ({ user }) => {
   const navigate = useNavigate();
   const [car, setCar] = useState(2);
+
+  const carIndex = {
+    Ferrari: 0,
+    Lambo: 1,
+    Mustang: 2,
+  };
+
+  const color = useControls({
+    car: {
+      value: "Ferrari",
+      options: ["Lambo", "Mustang"],
+      onChange: (e) => {
+        setCar(carIndex[e]);
+      },
+    },
+  });
 
   useEffect(() => {
     if (!user) {

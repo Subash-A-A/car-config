@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import "../styles/Home.scss";
 import { useNavigate } from "react-router-dom";
+import Cookies from "universal-cookie";
 
 function HomePage() {
   const isAuthenticated = localStorage.getItem("authenticated") || false;

@@ -3,8 +3,10 @@ import "../styles/Login.scss";
 import login_bg from "../assets/login_bg.png";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Cookies from "universal-cookie";
 
 function Login({ setCurrentUser }) {
+  const cookies = new Cookies();
   const navigate = useNavigate();
   const [isUser, setUser] = useState(false);
   function toggleState() {
@@ -22,6 +24,7 @@ function Login({ setCurrentUser }) {
       localStorage.setItem("authenticated", true);
       console.log("fine");
       setCurrentUser(user);
+      cookies.set("user", user, "/");
       navigate("/home");
     } else {
       alert(res);

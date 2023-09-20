@@ -21,7 +21,7 @@ export function Lambo2(props) {
 
   const bodyMat = new THREE.MeshStandardMaterial({
     color: color.body,
-    roughness: 0.5,
+    roughness: 0.4,
     metalness: 0.6,
   });
   const tireMat = new THREE.MeshStandardMaterial({
