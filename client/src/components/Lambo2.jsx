@@ -14,22 +14,25 @@ import { useControls } from "leva";
 
 export function Lambo2(props) {
   const color = useControls({
-    body: "#0f2445",
-    tire: "#000",
-    rim: "#6f6f6f",
+    lambo_body: "#bf4f00",
+    lambo_tire: "#000000",
+    lambo_rim: "#414141",
   });
 
   const bodyMat = new THREE.MeshStandardMaterial({
-    color: color.body,
-    roughness: 0.4,
-    metalness: 0.6,
+    color: color.lambo_body,
+    roughness: 0.3,
+    metalness: 0.7,
   });
   const tireMat = new THREE.MeshStandardMaterial({
-    color: color.tire,
+    color: color.lambo_tire,
     side: THREE.DoubleSide,
   });
   const rimMat = new THREE.MeshStandardMaterial({
-    color: color.rim,
+    color: color.lambo_rim,
+    side: THREE.DoubleSide,
+    roughness: 0.1,
+    metalness: 0.5,
   });
 
   const { nodes, materials } = useGLTF("./models/lambo2.glb");
@@ -222,7 +225,7 @@ export function Lambo2(props) {
               castShadow
               receiveShadow
               geometry={nodes.Wheel_FR_Rim_0.geometry}
-              material={materials.material}
+              material={rimMat}
             />
           </group>
           <group rotation={[0, 0, -Math.PI / 2]} scale={100}>
@@ -422,7 +425,7 @@ export function Lambo2(props) {
               castShadow
               receiveShadow
               geometry={nodes.Wheel_BR_Rim_0.geometry}
-              material={materials.material}
+              material={rimMat}
             />
           </group>
           <group
@@ -458,7 +461,7 @@ export function Lambo2(props) {
               castShadow
               receiveShadow
               geometry={nodes.Wheel_FL_Rim_0.geometry}
-              material={materials.material}
+              material={rimMat}
             />
           </group>
           <group
@@ -494,7 +497,7 @@ export function Lambo2(props) {
               castShadow
               receiveShadow
               geometry={nodes.Wheel_BL_Rim_0.geometry}
-              material={materials.material}
+              material={rimMat}
             />
           </group>
           <mesh

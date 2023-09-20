@@ -14,25 +14,27 @@ import * as THREE from "three";
 
 export function Mustang(props) {
   const color = useControls({
-    body: "#393E46",
-    tire: "#000",
-    rim: "#6f6f6f",
-    line: "#fff",
+    mustang_body: "#393E46",
+    mustang_tire: "#000",
+    mustang_rim: "#6f6f6f",
+    mustang_line: "#fff",
   });
 
   const bodyMat = new THREE.MeshStandardMaterial({
-    color: color.body,
-    roughness: 0.1,
-    metalness: 0.6,
+    color: color.mustang_body,
+    roughness: 0.3,
+    metalness: 0.7,
   });
   const lineMat = new THREE.MeshStandardMaterial({
-    color: color.line,
+    color: color.mustang_line,
   });
   const tireMat = new THREE.MeshStandardMaterial({
-    color: color.tire,
+    color: color.mustang_tire,
   });
   const rimMat = new THREE.MeshStandardMaterial({
-    color: color.rim,
+    color: color.mustang_rim,
+    roughness: 0.1,
+    metalness: 0.5,
   });
 
   const { nodes, materials } = useGLTF("./models/mustang.glb");

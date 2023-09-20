@@ -14,21 +14,21 @@ import { useControls } from "leva";
 
 export function Ferrari(props) {
   const color = useControls({
-    body: "#0f2445",
-    tire: "#000",
-    rim: "#6f6f6f",
+    ferrari_body: "#0f2445",
+    ferrari_tire: "#000",
+    ferrari_rim: "#6f6f6f",
   });
 
   const bodyMat = new THREE.MeshStandardMaterial({
-    color: color.body,
+    color: color.ferrari_body,
     roughness: 0.1,
     metalness: 0.6,
   });
   const tireMat = new THREE.MeshStandardMaterial({
-    color: color.tire,
+    color: color.ferrari_tire,
   });
   const rimMat = new THREE.MeshStandardMaterial({
-    color: color.rim,
+    color: color.ferrari_rim,
   });
 
   const { nodes, materials } = useGLTF("./models/ferrari.glb");
