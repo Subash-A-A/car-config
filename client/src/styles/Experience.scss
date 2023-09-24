@@ -1,4 +1,60 @@
 #experience {
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
+}
+
+.btn-container {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border-radius: 5px;
+  z-index: 999;
+}
+
+.button {
+  cursor: pointer;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 5px;
+  color: #eeeeee;
+  border: 1px solid transparent;
+  font-size: 24px;
+  font-family: "Staatliches";
+  border: 5px solid rgba(255, 255, 255, 0.2);
+}
+
+#cart-btn {
+  background-color: #000;
+}
+#save-btn {
+  background-color: #000;
+
+  &.changes {
+    background-color: #f24f22b0;
+  }
+  &.no-changes {
+    background-color: #2cf32cb0;
+    animation: save 0.5s ease forwards;
+  }
+}
+
+@keyframes save {
+  0% {
+    transform: scale(1);
+  }
+  10% {
+    transform: scale(0.5);
+  }
+
+  20% {
+    transform: scale(1.2);
+  }
+
+  35% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }

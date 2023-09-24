@@ -7,28 +7,22 @@ Source: https://sketchfab.com/3d-models/ferrari-550-barchetta-2000-azzurro-hyper
 Title: Ferrari 550 Barchetta 2000 Azzurro Hyperion
 */
 
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 import { useControls } from "leva";
 
 export function Ferrari(props) {
-  const color = useControls({
-    ferrari_body: "#0f2445",
-    ferrari_tire: "#000",
-    ferrari_rim: "#6f6f6f",
-  });
-
   const bodyMat = new THREE.MeshStandardMaterial({
-    color: color.ferrari_body,
-    roughness: 0.1,
-    metalness: 0.6,
+    color: props.color.body,
+    roughness: 0.3,
+    metalness: 0.7,
   });
   const tireMat = new THREE.MeshStandardMaterial({
-    color: color.ferrari_tire,
+    color: props.color.tire,
   });
   const rimMat = new THREE.MeshStandardMaterial({
-    color: color.ferrari_rim,
+    color: props.color.rim,
   });
 
   const { nodes, materials } = useGLTF("./models/ferrari.glb");

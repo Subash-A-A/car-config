@@ -21,6 +21,7 @@ function App() {
       {cookies.get("user") != null && (
         <button
           id="logout"
+          className="button"
           onClick={() => {
             cookies.set("user", null, "/");
             navigate("/");

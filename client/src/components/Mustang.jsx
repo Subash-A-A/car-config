@@ -13,26 +13,19 @@ import { useControls } from "leva";
 import * as THREE from "three";
 
 export function Mustang(props) {
-  const color = useControls({
-    mustang_body: "#393E46",
-    mustang_tire: "#000",
-    mustang_rim: "#6f6f6f",
-    mustang_line: "#fff",
-  });
-
   const bodyMat = new THREE.MeshStandardMaterial({
-    color: color.mustang_body,
+    color: props.color.body,
     roughness: 0.3,
     metalness: 0.7,
   });
   const lineMat = new THREE.MeshStandardMaterial({
-    color: color.mustang_line,
+    color: props.color.line,
   });
   const tireMat = new THREE.MeshStandardMaterial({
-    color: color.mustang_tire,
+    color: props.color.tire,
   });
   const rimMat = new THREE.MeshStandardMaterial({
-    color: color.mustang_rim,
+    color: props.color.rim,
     roughness: 0.1,
     metalness: 0.5,
   });

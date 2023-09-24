@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow: hidden;
+}
+
+#logout {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background-color: black;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: brown;
+  }
+}
+dialog {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  border: none;
+  border-radius: 1rem;
+}

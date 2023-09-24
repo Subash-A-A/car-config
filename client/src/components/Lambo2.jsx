@@ -7,29 +7,23 @@ Source: https://sketchfab.com/3d-models/free-lamborghini-revuelto-cf52245eb68f48
 Title: Free Lamborghini Revuelto
 */
 
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 import { useControls } from "leva";
 
 export function Lambo2(props) {
-  const color = useControls({
-    lambo_body: "#bf4f00",
-    lambo_tire: "#000000",
-    lambo_rim: "#414141",
-  });
-
   const bodyMat = new THREE.MeshStandardMaterial({
-    color: color.lambo_body,
+    color: props.color.body,
     roughness: 0.3,
     metalness: 0.7,
   });
   const tireMat = new THREE.MeshStandardMaterial({
-    color: color.lambo_tire,
+    color: props.color.tire,
     side: THREE.DoubleSide,
   });
   const rimMat = new THREE.MeshStandardMaterial({
-    color: color.lambo_rim,
+    color: props.color.rim,
     side: THREE.DoubleSide,
     roughness: 0.1,
     metalness: 0.5,
