@@ -5,6 +5,10 @@ const carDetailsTempalate = require("../models/CarModel");
 const orderDetailsTempalate = require("../models/CarOrder");
 const bcrypt = require("bcrypt");
 
+router.get("/", (req, res) => {
+  res.json({ message: "ok" });
+});
+
 router.post("/order", (req, res) => {
   const orderData = new orderDetailsTempalate({
     username: req.body.username,
@@ -19,12 +23,11 @@ router.post("/order", (req, res) => {
   orderData
     .save()
     .then((data) => {
-      res.json(data);
+      res.status(200).json(data);
       console.log("Added to cart: " + data);
     })
     .catch((err) => {
-      res.send({
-        status: 404,
+      res.status(400).send({
         message: "cannot save in DB",
         error: err,
       });
@@ -43,12 +46,11 @@ router.post("/cardata", (req, res) => {
   carData
     .save()
     .then((data) => {
-      res.json(data);
+      res.status(200).json(data);
       console.log("Saved Car Configuration: " + data);
     })
     .catch((err) => {
-      res.send({
-        status: 404,
+      res.status(400).send({
         message: "cannot save in DB",
       });
     });
@@ -63,24 +65,29 @@ router.post("/login", (req, res) => {
       if (existingUser !== null) {
         const result = await bcrypt.compare(password, existingUser.password);
         if (result) {
-          res.send("existing user");
+          res.status(200).send("existing user");
         } else {
-          res.send("password wrong");
+          res.status(400).send("password wrong");
         }
       } else {
-        res.send("no username found");
+        res.status(400).send("no username found");
       }
     }
   );
 });
 
+// router.get("/signup", (req, res) => {
+//   console.log("signup");
+// });
+
 router.post("/signup", (req, res) => {
   const { username, email, password } = req.body;
-
+  let ex = false;
   Signuptemplatecopy.findOne({ username: username, email: email })
     .then((existingUser) => {
       if (existingUser) {
-        return res.status(400).json({ error: "Email already exists" });
+        ex = true;
+        return res.status(200).json({ error: "Email already exists" });
       }
       const signupUser = new Signuptemplatecopy({
         username: username,
@@ -88,15 +95,15 @@ router.post("/signup", (req, res) => {
         password: password,
       });
 
-      return signupUser.save();
+      signupUser.save();
     })
     .then((data) => {
-      res.json(data);
+      if (!ex) res.status(200).json(data);
       console.log(data);
     })
     .catch((err) => {
-      console.error(err);
-      res.status(500).json({ error: "An error occurred" });
+      // res.send("An error occurred");
+      // res.json({ error: "An error occurred", status: 400 });
     });
 });
 
@@ -104,7 +111,7 @@ router.post("/cartCount", (req, res) => {
   orderDetailsTempalate
     .find({ username: req.body.username })
     .then((data) => {
-      res.json({ count: data.length });
+      res.status(200).json({ count: data.length });
       console.log(data.length);
     })
     .catch((err) => console.error(err));

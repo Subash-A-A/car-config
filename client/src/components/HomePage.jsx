@@ -24,6 +24,7 @@ function HomePage() {
             </div>
             <div
               className="btn"
+              id="get-started-btn"
               onClick={() => {
                 navigate("/editor");
               }}

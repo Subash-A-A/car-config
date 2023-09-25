@@ -99,13 +99,21 @@ function Login({ setCurrentUser }) {
             </div>
             {isUser ? (
               <>
-                <div className="login_button" onClick={signIn}>
+                <div
+                  className="login_button"
+                  id="signin_button"
+                  onClick={signIn}
+                >
                   Sign in
                 </div>
               </>
             ) : (
               <>
-                <div className="login_button" onClick={signUp}>
+                <div
+                  className="login_button"
+                  id="signup_button"
+                  onClick={signUp}
+                >
                   Sign up
                 </div>
               </>
